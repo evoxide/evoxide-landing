@@ -1,0 +1,19 @@
+{
+  "name": "evoxide-landing",
+  "version": "0.1.0",
+  "private": true,
+  "license": "Apache-2.0",
+  "type": "module",
+  "packageManager": "bun@1.3.13",
+  "scripts": {
+    "dev": "bun run --bun astro dev",
+    "build": "bun run --bun astro build",
+    "preview": "bun run --bun astro preview"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "4.3.3",
+    "astro": "7.2.4",
+    "sharp": "0.35.3",
+    "tailwindcss": "4.3.3"
+  }
+}

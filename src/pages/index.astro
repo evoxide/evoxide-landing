@@ -1,0 +1,310 @@
+---
+import { getImage, Image } from "astro:assets";
+
+import evoxideFull from "../assets/evoxide-full.png";
+import evoxideMark from "../assets/evoxide-mark.png";
+import ogImage from "../assets/og.png";
+import "../styles/global.css";
+
+const optimizedOgImage = await getImage({ src: ogImage, width: 1200, height: 630, format: "jpeg", quality: 85 });
+const optimizedFavicon = await getImage({ src: evoxideMark, width: 64, height: 64, format: "png" });
+
+const stats = [
+  ["5+", "лет опыта"],
+  ["10+", "крупных клиентов"],
+  ["30+", "отдельных проектов"],
+  ["2", "реестровых продукта"],
+];
+
+const clients = [
+  ["01", "Производственные компании", "Которые хотят снизить брак и оптимизировать процессы."],
+  ["02", "Ритейл и дистрибьюторы", "Которым нужны данные конкурентов и автоматизация ценообразования."],
+  ["03", "Компании с B2B-системами", "Где цены зависят от поставщиков и рыночной ситуации."],
+  ["04", "Бизнесы, которые выросли из Excel", "И хотят видеть дашборды в реальном времени."],
+];
+
+const realCases = [
+  "Информационно-аналитический портал для сервисной компании с 300+ партнёрами",
+  "Поддержка интернет-магазина электроники и офисной техники с каталогом 20 000+ товаров",
+  "Мониторинг 1 000 000+ цен конкурентов для поставщика техники с 500+ партнёрами в ЮФО и на Северном Кавказе",
+  "Мониторинг динамики цен на маркетплейсах для системного интегратора e-commerce",
+  "Алгоритмы оптимизации производственных линий для производителя пищевой упаковки с поставками в 90 стран",
+  "ИИ-анализ телефонных звонков для аккредитованной ИТ-компании из Ростовской области",
+  "Генерация описаний карточек товаров для поставщика техники с каталогом 100 000+ товаров",
+  "Миграция на новый helpdesk для авиакомпании с круглосуточным контакт-центром",
+  "Сопровождение инфраструктуры аккредитованной ИТ-компании: почта, виртуальные машины, внутренние платформы",
+];
+
+const processSteps = [
+  ["1", "Вы рассказываете задачу", "Любым удобным способом: звонок, сообщение, встреча."],
+  ["2", "Мы задаём вопросы", "Чтобы понять реальную проблему и не делать лишнего."],
+  ["3", "Предлагаем решение и цену", "Без технического жаргона, понятными словами."],
+  ["4", "Делаем поэтапно", "С промежуточными показами и обратной связью."],
+  ["5", "Передаём и сопровождаем", "Пока система не заработает как надо."],
+];
+
+const competencies = [
+  ["Парсинг и сбор данных", "Любые сайты, защита, обход блокировок, история цен, интеграция с 1С."],
+  ["Микросервисы и интеграции", "API, связка 1С и внешних сервисов, маркетплейсы, B2B-ценообразование."],
+  ["Алгоритмы и IoT", "Управление конвейерами, снижение брака, обработка потоков данных в реальном времени."],
+  ["BI и дашборды", "Агрегация данных, визуализация KPI, быстрые решения на основе фактов."],
+  ["DevOps и Linux", "Серверы, виртуализация, почтовики, CI/CD, мониторинг, резервное копирование."],
+  ["Сопровождение", "Поддержка работоспособности инфраструктуры клиента, доработки и масштабирование."],
+];
+---
+
+<!doctype html>
+<html lang="ru" class="scroll-smooth [scroll-padding-top:10rem] xl:[scroll-padding-top:8rem]">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content="Автоматизация, интеграция, оптимизация — там, где это сложно. Парсинг, микросервисы, BI, DevOps." />
+    <meta property="og:title" content="EVOxide — Инженерная команда для нестандартных бизнес-задач" />
+    <meta property="og:description" content="Автоматизация, интеграция, оптимизация — там, где это сложно. Парсинг, микросервисы, BI, DevOps." />
+    <meta property="og:image" content={optimizedOgImage.src} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="EVOxide — Инженерная команда для нестандартных бизнес-задач" />
+    <meta name="twitter:description" content="Автоматизация, интеграция, оптимизация — там, где это сложно. Парсинг, микросервисы, BI, DevOps." />
+    <meta name="twitter:image" content={optimizedOgImage.src} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="icon" type="image/png" href={optimizedFavicon.src} />
+    <title>EVOxide — Инженерная команда для нестандартных бизнес-задач</title>
+  </head>
+
+  <body class="m-0 overflow-x-hidden bg-page font-sans text-copy antialiased selection:bg-brand selection:text-copy">
+    <header class="fixed inset-x-0 top-0 z-50 border-b border-line bg-page/90 py-3 backdrop-blur-xl sm:py-4">
+      <div class="mx-auto flex w-[92%] max-w-[1200px] flex-col items-center gap-3 xl:flex-row xl:justify-between">
+        <a href="#top" class="shrink-0 focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-4 xl:mr-8" aria-label="EVOxide">
+          <Image class="h-10 w-auto max-w-[180px] object-contain sm:h-12 sm:max-w-[220px]" src={evoxideFull} alt="EVOxide" width={988} height={261} format="webp" loading="eager" />
+        </a>
+        <nav class="flex w-full flex-wrap items-center justify-center gap-x-3 gap-y-2 text-xs font-medium text-muted sm:text-sm xl:w-auto xl:flex-nowrap xl:justify-end xl:gap-8" aria-label="Основная навигация">
+          <a class="inline-flex h-9 shrink-0 items-center rounded-full px-2 transition-colors hover:text-copy" href="#about">О нас</a>
+          <a class="inline-flex h-9 shrink-0 items-center rounded-full px-2 transition-colors hover:text-copy" href="#cases">С чем работаем</a>
+          <a class="inline-flex h-9 shrink-0 items-center rounded-full px-2 transition-colors hover:text-copy" href="#clients">Кому подходит</a>
+          <a class="inline-flex h-9 shrink-0 items-center rounded-full px-2 transition-colors hover:text-copy" href="#real-cases">Кейсы</a>
+          <a class="inline-flex h-9 shrink-0 items-center rounded-full px-2 transition-colors hover:text-copy" href="#process">Как работаем</a>
+          <a class="inline-flex h-9 shrink-0 items-center rounded-full px-2 transition-colors hover:text-copy" href="#stack">Компетенции</a>
+          <a class="inline-flex h-9 shrink-0 items-center rounded-full bg-brand px-4 text-copy transition-colors hover:bg-brand-hover" href="#contacts">Контакты</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="relative flex min-h-screen items-center justify-center overflow-hidden px-4 pb-28 pt-40 text-center sm:px-0 sm:pb-32 sm:pt-44">
+        <div class="relative z-10 mx-auto min-w-0 w-full max-w-[1200px]">
+          <p class="mb-6 inline-block rounded-full border border-line bg-panel px-4 py-2 text-xs font-semibold text-accent sm:text-sm">Инженерная команда</p>
+          <h1 class="mx-auto mb-8 min-w-0 w-full max-w-[1180px] text-[clamp(1.9rem,9.5vw,3rem)] font-extrabold leading-[1.02] tracking-[-.055em] sm:text-[clamp(2.45rem,6.6vw,6.4rem)] sm:leading-[.98] sm:tracking-[-.065em]">
+            <span class="block whitespace-nowrap sm:mr-3 sm:inline-block">Автоматизация.</span>
+            <span class="block whitespace-nowrap sm:mr-3 sm:inline-block">Интеграция.</span>
+            <span class="block whitespace-nowrap text-brand sm:inline-block">Оптимизация.</span>
+            <span class="mt-5 block text-[.48em] font-medium leading-tight tracking-[-.035em] text-muted">Там, где это сложно.</span>
+          </h1>
+          <p class="mx-auto mb-10 max-w-[680px] text-base leading-7 text-muted sm:text-xl sm:leading-8">
+            Парсинг, микросервисы, BI, алгоритмы для производства и DevOps под ключ.
+          </p>
+          <div class="flex flex-wrap justify-center gap-4">
+            <a class="inline-flex items-center justify-center rounded-full bg-brand px-8 py-3.5 text-sm font-semibold text-copy shadow-[0_10px_40px_rgba(196,69,14,.32)] transition hover:-translate-y-0.5 hover:bg-brand-hover" href="#contacts">Обсудить задачу</a>
+            <a class="inline-flex items-center justify-center rounded-full border border-line bg-panel px-8 py-3.5 text-sm font-semibold text-copy transition hover:-translate-y-0.5 hover:border-line-strong" href="#cases">Смотреть кейсы</a>
+          </div>
+        </div>
+        <div class="absolute bottom-10 left-1/2 h-10 w-6 -translate-x-1/2 rounded-xl border-2 border-line" aria-hidden="true">
+          <span class="mx-auto mt-1.5 block h-2 w-1 rounded-full bg-muted motion-safe:animate-bounce"></span>
+        </div>
+      </section>
+
+      <section id="about" class="bg-page-alt py-20 sm:py-28">
+        <div class="mx-auto w-[92%] max-w-[1200px]">
+          <div class="mb-14 max-w-[640px]">
+            <span class="mb-4 inline-block text-xs font-bold uppercase tracking-[.08em] text-accent">О нас</span>
+            <h2 class="mb-4 text-[clamp(1.8rem,4vw,3rem)] font-extrabold leading-[1.15] tracking-[-.03em]">Инженерная команда для сложных задач</h2>
+            <p class="text-lg text-muted">Парсинг, интеграции, алгоритмы, DevOps и ИИ под ключ.</p>
+          </div>
+          <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {stats.map(([number, label]) => (
+              <div class="rounded-[20px] border border-line bg-panel px-7 py-9 text-center transition duration-500 hover:-translate-y-1 hover:border-line-strong">
+                <span class="mb-3 block bg-gradient-to-r from-brand to-brand-hover bg-clip-text text-5xl font-extrabold leading-none text-transparent">{number}</span>
+                <span class="text-base text-muted">{label}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="cases" class="bg-page-alt py-20 sm:py-28">
+        <div class="mx-auto w-[92%] max-w-[1200px]">
+          <div class="mb-14 max-w-[640px]">
+            <span class="mb-4 inline-block text-xs font-bold uppercase tracking-[.08em] text-accent">Кейсы</span>
+            <h2 class="mb-4 text-[clamp(1.8rem,4vw,3rem)] font-extrabold leading-[1.15] tracking-[-.03em]">С чем мы работаем</h2>
+            <p class="text-lg text-muted">Если вам нужно...</p>
+          </div>
+
+          <div class="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+            <article class="group flex flex-col rounded-[20px] border border-line bg-panel p-6 transition duration-500 hover:-translate-y-1.5 hover:border-line-strong hover:bg-brand-soft sm:p-8">
+              <div class="mb-6 grid h-14 w-14 place-items-center rounded-2xl bg-brand text-copy">
+                <svg class="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3" /><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" /></svg>
+              </div>
+              <h3 class="mb-4 text-lg font-bold leading-[1.3]">Собирать цены конкурентов и видеть их динамику</h3>
+              <p class="mb-4 text-[.95rem] text-muted">Напишем парсеры любых сайтов, привяжем к вашему справочнику 1С и выстроим историю.</p>
+              <p class="mt-auto rounded-xl border-l-[3px] border-accent bg-brand-soft p-4 text-[.95rem] text-accent">Актуальные данные каждый день. Решения по ценам, а не вслепую.</p>
+            </article>
+
+            <article class="group flex flex-col rounded-[20px] border border-line bg-panel p-6 transition duration-500 hover:-translate-y-1.5 hover:border-line-strong hover:bg-brand-soft sm:p-8">
+              <div class="mb-6 grid h-14 w-14 place-items-center rounded-2xl bg-brand text-copy">
+                <svg class="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2" /><path d="M8 21h8" /><path d="M12 17v4" /></svg>
+              </div>
+              <h3 class="mb-4 text-lg font-bold leading-[1.3]">Автоматизировать загрузку товаров на маркетплейсы</h3>
+              <p class="mb-4 text-[.95rem] text-muted">Создадим карточки товаров, настроим расчёт цен под условия площадок.</p>
+              <p class="mt-auto rounded-xl border-l-[3px] border-accent bg-brand-soft p-4 text-[.95rem] text-accent">Сотрудники перестанут тратить часы на ручной ввод. Ошибки исчезнут.</p>
+            </article>
+
+            <article class="group flex flex-col rounded-[20px] border border-line bg-panel p-6 transition duration-500 hover:-translate-y-1.5 hover:border-line-strong hover:bg-brand-soft sm:p-8">
+              <div class="mb-6 grid h-14 w-14 place-items-center rounded-2xl bg-brand text-copy">
+                <svg class="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 2v20" /><path d="M2 12h20" /><path d="m4.93 4.93 14.14 14.14" /><path d="m19.07 4.93-14.14 14.14" /></svg>
+              </div>
+              <h3 class="mb-4 text-lg font-bold leading-[1.3]">Рассчитывать цены для B2B с учётом данных поставщиков</h3>
+              <p class="mb-4 text-[.95rem] text-muted">Настроим парсинг поставщиков и подтянем данные прямо в систему расчёта.</p>
+              <p class="mt-auto rounded-xl border-l-[3px] border-accent bg-brand-soft p-4 text-[.95rem] text-accent">Актуальные цены для оптовиков. Меньше возражений и пересчётов.</p>
+            </article>
+
+            <article class="group flex flex-col rounded-[20px] border border-line bg-panel p-6 transition duration-500 hover:-translate-y-1.5 hover:border-line-strong hover:bg-brand-soft sm:p-8">
+              <div class="mb-6 grid h-14 w-14 place-items-center rounded-2xl bg-brand text-copy">
+                <svg class="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 12h-4l-3 9L9 3l-3 9H2" /></svg>
+              </div>
+              <h3 class="mb-4 text-lg font-bold leading-[1.3]">Убрать брак на производстве</h3>
+              <p class="mb-4 text-[.95rem] text-muted">Разработаем алгоритм управления конвейерной линией в реальном времени.</p>
+              <p class="mt-auto rounded-xl border-l-[3px] border-accent bg-brand-soft p-4 text-[.95rem] text-accent">Снижение отходов. Экономия на материалах.</p>
+            </article>
+
+            <article class="group flex flex-col rounded-[20px] border border-line bg-panel p-6 transition duration-500 hover:-translate-y-1.5 hover:border-line-strong hover:bg-brand-soft sm:p-8">
+              <div class="mb-6 grid h-14 w-14 place-items-center rounded-2xl bg-brand text-copy">
+                <svg class="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 3v18h18" /><path d="m19 9-5 5-4-4-3 3" /></svg>
+              </div>
+              <h3 class="mb-4 text-lg font-bold leading-[1.3]">Видеть бизнес в цифрах на одном экране</h3>
+              <p class="mb-4 text-[.95rem] text-muted">Построим BI-систему с дашбордами под ваши ключевые показатели.</p>
+              <p class="mt-auto rounded-xl border-l-[3px] border-accent bg-brand-soft p-4 text-[.95rem] text-accent">Решения — в день получения данных, а не через неделю.</p>
+            </article>
+
+            <article class="group flex flex-col rounded-[20px] border border-line bg-panel p-6 transition duration-500 hover:-translate-y-1.5 hover:border-line-strong hover:bg-brand-soft sm:p-8">
+              <div class="mb-6 grid h-14 w-14 place-items-center rounded-2xl bg-brand text-copy">
+                <svg class="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="2" width="20" height="8" rx="2" /><rect x="2" y="14" width="20" height="8" rx="2" /><path d="M6 6h.01" /><path d="M6 18h.01" /></svg>
+              </div>
+              <h3 class="mb-4 text-lg font-bold leading-[1.3]">Поддерживать инфраструктуру и сервера</h3>
+              <p class="mb-4 text-[.95rem] text-muted">Настроим Linux, виртуалки, почтовики, мониторинг и резервное копирование.</p>
+              <p class="mt-auto rounded-xl border-l-[3px] border-accent bg-brand-soft p-4 text-[.95rem] text-accent">Работоспособность системы 24/7 без авралов.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="clients" class="py-20 sm:py-28">
+        <div class="mx-auto w-[92%] max-w-[1200px]">
+          <div class="mb-14 max-w-[640px]">
+            <span class="mb-4 inline-block text-xs font-bold uppercase tracking-[.08em] text-accent">Клиенты</span>
+            <h2 class="mb-4 text-[clamp(1.8rem,4vw,3rem)] font-extrabold leading-[1.15] tracking-[-.03em]">Кому это подходит</h2>
+          </div>
+          <div class="grid gap-5 md:grid-cols-2">
+            {clients.map(([number, title, text]) => (
+              <div class="relative overflow-hidden rounded-[20px] border border-line bg-panel p-7 transition duration-500 hover:-translate-y-1 hover:border-line-strong sm:p-9">
+                <span class="absolute right-6 top-5 text-6xl font-extrabold leading-none text-accent/20">{number}</span>
+                <h3 class="relative mb-3 pr-16 text-xl font-semibold">{title}</h3>
+                <p class="relative text-muted">{text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="real-cases" class="bg-page py-20 sm:py-28">
+        <div class="mx-auto w-[92%] max-w-[1200px]">
+          <div class="mb-14 max-w-[640px]">
+            <span class="mb-4 inline-block text-xs font-bold uppercase tracking-[.08em] text-accent">Клиенты</span>
+            <h2 class="mb-4 text-[clamp(1.8rem,4vw,3rem)] font-extrabold leading-[1.15] tracking-[-.03em]">Реальные кейсы внешних клиентов</h2>
+            <p class="text-lg text-muted">Задачи, которые мы уже решили лично.</p>
+          </div>
+          <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {realCases.map((item, index) => (
+              <div class="relative overflow-hidden rounded-[20px] border border-line bg-panel p-7 transition duration-500 hover:-translate-y-1 hover:border-line-strong">
+                <span class="absolute right-5 top-4 text-5xl font-extrabold leading-none text-accent/20">{String(index + 1).padStart(2, "0")}</span>
+                <p class="pr-10 text-base font-medium leading-6">{item}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="process" class="bg-page-alt py-20 sm:py-28">
+        <div class="mx-auto w-[92%] max-w-[1200px]">
+          <div class="mb-14 max-w-[640px]">
+            <span class="mb-4 inline-block text-xs font-bold uppercase tracking-[.08em] text-accent">Процесс</span>
+            <h2 class="mb-4 text-[clamp(1.8rem,4vw,3rem)] font-extrabold leading-[1.15] tracking-[-.03em]">Как мы работаем</h2>
+            <p class="text-lg text-muted">Без технического жаргона, поэтапно, с промежуточными показами.</p>
+          </div>
+          <div class="relative grid gap-4 md:grid-cols-3 lg:grid-cols-5">
+            <div class="absolute left-[10%] right-[10%] top-7 hidden h-0.5 bg-brand/30 lg:block" aria-hidden="true"></div>
+            {processSteps.map(([number, title, text]) => (
+              <div class="relative z-10 rounded-[20px] border border-line bg-panel p-7 transition duration-500 hover:-translate-y-1 hover:border-line-strong">
+                <span class="mb-5 grid h-12 w-12 place-items-center rounded-full bg-brand font-bold text-copy">{number}</span>
+                <h3 class="mb-2 text-base font-semibold">{title}</h3>
+                <p class="text-sm text-muted">{text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="stack" class="py-20 sm:py-28">
+        <div class="mx-auto w-[92%] max-w-[1200px]">
+          <div class="mb-14 max-w-[640px]">
+            <span class="mb-4 inline-block text-xs font-bold uppercase tracking-[.08em] text-accent">Компетенции</span>
+            <h2 class="mb-4 text-[clamp(1.8rem,4vw,3rem)] font-extrabold leading-[1.15] tracking-[-.03em]">Что у нас в арсенале</h2>
+          </div>
+          <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {competencies.map(([title, text]) => (
+              <div class="rounded-[20px] border border-line bg-panel p-7 transition duration-500 hover:-translate-y-1 hover:border-line-strong">
+                <h3 class="mb-2 text-lg font-semibold">{title}</h3>
+                <p class="text-[.95rem] text-muted">{text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="contacts" class="bg-page-alt py-20 sm:py-28">
+        <div class="mx-auto w-[92%] max-w-[1200px]">
+          <div class="grid gap-10 rounded-[20px] border border-line bg-panel p-7 sm:p-10 lg:grid-cols-[.9fr_1.1fr] lg:p-14">
+            <div>
+              <span class="mb-4 inline-block text-xs font-bold uppercase tracking-[.08em] text-accent">Контакты</span>
+              <h2 class="mb-4 text-[clamp(1.8rem,4vw,3rem)] font-extrabold leading-[1.15] tracking-[-.03em]">Обсудить задачу</h2>
+              <p class="text-lg text-muted">Без звонков и лишних созвонов. Напишите — мы на связи.</p>
+            </div>
+            <div class="grid content-center gap-3">
+              <a class="flex items-center gap-3 rounded-xl border border-line bg-page/40 p-4 font-medium transition-colors hover:border-line-strong hover:text-accent" href="https://t.me/@essqz" target="_blank" rel="noopener">
+                <svg class="h-6 w-6 shrink-0 text-accent" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" /></svg>
+                <span>Telegram: @essqz</span>
+              </a>
+              <a class="flex items-center gap-3 rounded-xl border border-line bg-page/40 p-4 font-medium transition-colors hover:border-line-strong hover:text-accent" href="https://wa.me/79604453375" target="_blank" rel="noopener">
+                <svg class="h-6 w-6 shrink-0 text-accent" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" /></svg>
+                <span>WhatsApp: +7(960)445-33-75</span>
+              </a>
+              <a class="flex items-center gap-3 rounded-xl border border-line bg-page/40 p-4 font-medium transition-colors hover:border-line-strong hover:text-accent" href="mailto:estromenko@mail.ru">
+                <svg class="h-6 w-6 shrink-0 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" /><path d="m22 6-10 7L2 6" /></svg>
+                <span>Email: estromenko@mail.ru</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="border-t border-line bg-page py-8 sm:py-10">
+      <div class="mx-auto flex w-[92%] max-w-[1200px] flex-col items-center justify-between gap-4 text-center text-sm text-muted sm:flex-row sm:text-left">
+        <a href="#top" class="focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-4">
+          <Image class="h-9 w-auto max-w-[180px] object-contain sm:h-10" src={evoxideFull} alt="EVOxide" width={988} height={261} format="webp" loading="lazy" />
+        </a>
+        <p>© 2026 EVOxide. Инженерные решения для бизнеса.</p>
+      </div>
+    </footer>
+  </body>
+</html>

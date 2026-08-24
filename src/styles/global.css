@@ -1,0 +1,16 @@
+@import "tailwindcss";
+
+@theme {
+  --color-page: #0b0908;
+  --color-page-alt: #120e0c;
+  --color-panel: rgb(247 242 238 / 0.045);
+  --color-line: rgb(240 154 109 / 0.14);
+  --color-line-strong: rgb(196 69 14 / 0.48);
+  --color-copy: #f7f2ee;
+  --color-muted: #b8aaa2;
+  --color-brand: #c4450e;
+  --color-brand-hover: #d55319;
+  --color-brand-soft: rgb(196 69 14 / 0.12);
+  --color-accent: #f0a078;
+  --font-sans: "Inter", system-ui, sans-serif;
+}
