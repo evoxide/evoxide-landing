@@ -2,12 +2,12 @@
 import { getImage, Image } from "astro:assets";
 
 import evoxideFull from "../assets/evoxide-full.png";
-import evoxideMark from "../assets/evoxide-mark.png";
 import ogImage from "../assets/og.png";
+import HeroIntro from "../components/HeroIntro.astro";
+import HeroMark from "../components/HeroMark.astro";
 import "../styles/global.css";
 
 const optimizedOgImage = await getImage({ src: ogImage, width: 1200, height: 630, format: "jpeg", quality: 85 });
-const optimizedFavicon = await getImage({ src: evoxideMark, width: 64, height: 64, format: "png" });
 
 const stats = [
   ["5+", "лет опыта"],
@@ -54,10 +54,10 @@ const competencies = [
 ---
 
 <!doctype html>
-<html lang="ru" class="scroll-smooth [scroll-padding-top:10rem] xl:[scroll-padding-top:8rem]">
+<html lang="ru" class="scroll-smooth [scroll-padding-top:10rem] lg:[scroll-padding-top:6rem]">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="Автоматизация, интеграция, оптимизация — там, где это сложно. Парсинг, микросервисы, BI, DevOps." />
     <meta property="og:title" content="EVOxide — Инженерная команда для нестандартных бизнес-задач" />
     <meta property="og:description" content="Автоматизация, интеграция, оптимизация — там, где это сложно. Парсинг, микросервисы, BI, DevOps." />
@@ -69,17 +69,27 @@ const competencies = [
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-    <link rel="icon" type="image/png" href={optimizedFavicon.src} />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <title>EVOxide — Инженерная команда для нестандартных бизнес-задач</title>
   </head>
 
   <body class="m-0 overflow-x-hidden bg-page font-sans text-copy antialiased selection:bg-brand selection:text-copy">
-    <header class="fixed inset-x-0 top-0 z-50 border-b border-line bg-page/90 py-3 backdrop-blur-xl sm:py-4">
-      <div class="mx-auto flex w-[92%] max-w-[1200px] flex-col items-center gap-3 xl:flex-row xl:justify-between">
-        <a href="#top" class="shrink-0 focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-4 xl:mr-8" aria-label="EVOxide">
-          <Image class="h-10 w-auto max-w-[180px] object-contain sm:h-12 sm:max-w-[220px]" src={evoxideFull} alt="EVOxide" width={988} height={261} format="webp" loading="eager" />
+    <header class="site-header fixed inset-x-0 top-0 z-50 border-b border-line bg-page/90 py-3 backdrop-blur-xl sm:py-4" data-site-header>
+      <div class="site-header-inner mx-auto flex w-[92%] max-w-[1200px] flex-col items-center gap-3 xl:flex-row xl:justify-between">
+        <a href="#top" class="site-header-logo shrink-0 focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-4 xl:mr-8" aria-label="EVOxide">
+          <Image class="site-header-logo-image h-10 w-auto max-w-[180px] object-contain sm:h-12 sm:max-w-[220px]" src={evoxideFull} alt="EVOxide" width={988} height={261} format="webp" loading="eager" />
         </a>
-        <nav class="flex w-full flex-wrap items-center justify-center gap-x-3 gap-y-2 text-xs font-medium text-muted sm:text-sm xl:w-auto xl:flex-nowrap xl:justify-end xl:gap-8" aria-label="Основная навигация">
+        <button
+          class="site-nav-toggle inline-flex h-9 items-center justify-center rounded-full border border-line bg-panel px-3 text-xs font-semibold text-copy transition-colors hover:border-line-strong"
+          type="button"
+          data-nav-toggle
+          aria-controls="site-navigation"
+          aria-expanded="false"
+        >Меню</button>
+        <nav id="site-navigation" class="site-nav flex w-full flex-wrap items-center justify-center gap-x-3 gap-y-2 text-xs font-medium text-muted sm:text-sm xl:w-auto xl:flex-nowrap xl:justify-end xl:gap-8" data-open="false" aria-label="Основная навигация">
           <a class="inline-flex h-9 shrink-0 items-center rounded-full px-2 transition-colors hover:text-copy" href="#about">О нас</a>
           <a class="inline-flex h-9 shrink-0 items-center rounded-full px-2 transition-colors hover:text-copy" href="#cases">С чем работаем</a>
           <a class="inline-flex h-9 shrink-0 items-center rounded-full px-2 transition-colors hover:text-copy" href="#clients">Кому подходит</a>
@@ -92,25 +102,13 @@ const competencies = [
     </header>
 
     <main id="top">
-      <section class="relative flex min-h-screen items-center justify-center overflow-hidden px-4 pb-28 pt-40 text-center sm:px-0 sm:pb-32 sm:pt-44">
+      <section class="hero-section relative flex min-h-[100svh] items-center justify-center overflow-x-clip px-4 pb-12 pt-40 text-center sm:px-0 sm:pb-24 sm:pt-40 lg:pb-[clamp(3rem,8vh,4.5rem)] lg:pt-[clamp(5.5rem,12.5vh,7rem)]">
         <div class="relative z-10 mx-auto min-w-0 w-full max-w-[1200px]">
-          <p class="mb-6 inline-block rounded-full border border-line bg-panel px-4 py-2 text-xs font-semibold text-accent sm:text-sm">Инженерная команда</p>
-          <h1 class="mx-auto mb-8 min-w-0 w-full max-w-[1180px] text-[clamp(1.9rem,9.5vw,3rem)] font-extrabold leading-[1.02] tracking-[-.055em] sm:text-[clamp(2.45rem,6.6vw,6.4rem)] sm:leading-[.98] sm:tracking-[-.065em]">
-            <span class="block whitespace-nowrap sm:mr-3 sm:inline-block">Автоматизация.</span>
-            <span class="block whitespace-nowrap sm:mr-3 sm:inline-block">Интеграция.</span>
-            <span class="block whitespace-nowrap text-brand sm:inline-block">Оптимизация.</span>
-            <span class="mt-5 block text-[.48em] font-medium leading-tight tracking-[-.035em] text-muted">Там, где это сложно.</span>
-          </h1>
-          <p class="mx-auto mb-10 max-w-[680px] text-base leading-7 text-muted sm:text-xl sm:leading-8">
-            Парсинг, микросервисы, BI, алгоритмы для производства и DevOps под ключ.
-          </p>
-          <div class="flex flex-wrap justify-center gap-4">
-            <a class="inline-flex items-center justify-center rounded-full bg-brand px-8 py-3.5 text-sm font-semibold text-copy shadow-[0_10px_40px_rgba(196,69,14,.32)] transition hover:-translate-y-0.5 hover:bg-brand-hover" href="#contacts">Обсудить задачу</a>
-            <a class="inline-flex items-center justify-center rounded-full border border-line bg-panel px-8 py-3.5 text-sm font-semibold text-copy transition hover:-translate-y-0.5 hover:border-line-strong" href="#cases">Смотреть кейсы</a>
-          </div>
+          <HeroMark />
+          <HeroIntro />
         </div>
-        <div class="absolute bottom-10 left-1/2 h-10 w-6 -translate-x-1/2 rounded-xl border-2 border-line" aria-hidden="true">
-          <span class="mx-auto mt-1.5 block h-2 w-1 rounded-full bg-muted motion-safe:animate-bounce"></span>
+        <div class="hero-scroll-indicator absolute bottom-4 left-1/2 h-10 w-6 -translate-x-1/2 overflow-hidden rounded-xl border-2 border-line max-md:hidden sm:bottom-10" aria-hidden="true">
+          <span class="mx-auto mt-1.5 block h-2 w-1 will-change-transform rounded-full bg-muted animate-scroll-indicator"></span>
         </div>
       </section>
 
@@ -306,5 +304,35 @@ const competencies = [
         <p>© 2026 EVOxide. Инженерные решения для бизнеса.</p>
       </div>
     </footer>
+
+    <script>
+      const siteHeader = document.querySelector<HTMLElement>("[data-site-header]");
+      const navToggle = document.querySelector<HTMLButtonElement>("[data-nav-toggle]");
+      const siteNav = document.querySelector<HTMLElement>("#site-navigation");
+
+      if (siteHeader && navToggle && siteNav) {
+        const setNavOpen = (open: boolean): void => {
+          siteNav.dataset.open = String(open);
+          navToggle.setAttribute("aria-expanded", String(open));
+        };
+
+        siteHeader.dataset.navReady = "true";
+        navToggle.addEventListener("click", () => {
+          setNavOpen(siteNav.dataset.open !== "true");
+        });
+
+        siteNav.querySelectorAll("a").forEach(link => {
+          link.addEventListener("click", () => setNavOpen(false));
+        });
+
+        document.addEventListener("keydown", event => {
+          if (event.key === "Escape") setNavOpen(false);
+        });
+
+        window.matchMedia("(min-width: 80rem)").addEventListener("change", () => {
+          setNavOpen(false);
+        });
+      }
+    </script>
   </body>
 </html>

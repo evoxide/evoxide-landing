@@ -13,4 +13,248 @@
   --color-brand-soft: rgb(196 69 14 / 0.12);
   --color-accent: #f0a078;
   --font-sans: "Inter", system-ui, sans-serif;
+  --animate-scroll-indicator: scroll-indicator 1.7s ease-in-out infinite;
+
+  @keyframes scroll-indicator {
+    0% {
+      opacity: 0;
+      transform: translateY(0);
+    }
+
+    12% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    72% {
+      opacity: 1;
+      transform: translateY(1.25rem);
+    }
+
+    100% {
+      opacity: 0;
+      transform: translateY(1.25rem);
+    }
+  }
+}
+
+/* The header is fixed, so it must remain usable even when the CSS viewport is short. */
+.site-header {
+  max-height: 100dvh;
+  overflow-y: auto;
+}
+
+.site-nav-toggle {
+  display: none;
+}
+
+/* The reference layout is large only when both width and height can support it. */
+@media (min-width: 1600px) and (min-height: 1200px) {
+  .site-header-inner {
+    max-width: 1400px;
+  }
+}
+
+@media (min-width: 1920px) and (min-height: 1200px) {
+  .site-header-inner {
+    max-width: 1600px;
+  }
+}
+
+@media (min-width: 64rem) and (max-height: 1199px) {
+  .site-header {
+    padding-block: 1rem;
+  }
+
+  .site-header-inner {
+    gap: 0.75rem;
+  }
+
+  .site-header-logo-image {
+    height: 3rem;
+  }
+
+  .site-nav {
+    gap: 2rem;
+  }
+
+  .site-nav a {
+    height: 2.25rem;
+  }
+
+  .hero-section {
+    padding-top: 3rem;
+    padding-bottom: 2rem;
+  }
+
+  .hero-mark {
+    transform: translateY(-1rem);
+    width: clamp(116px, min(16.5vh, 13.5vw), 153px);
+    height: clamp(120px, min(18vh, 14vw), 160px);
+    margin-bottom: 2rem;
+  }
+
+  .hero-section hero-intro > p:first-child {
+    margin-bottom: 0.75rem;
+  }
+
+  .hero-title {
+    min-height: calc(3.6em + 18px);
+    margin-bottom: 1rem;
+    font-size: clamp(2.4rem, min(7vh, 6vw), 4.5rem);
+  }
+
+  .hero-supporting-copy {
+    max-width: 760px;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .hero-actions a {
+    padding-block: 0.625rem;
+  }
+
+  .hero-scroll-indicator {
+    display: none;
+  }
+}
+
+@media (min-width: 64rem) and (max-height: 799px) {
+  .site-header {
+    padding-block: 0.5rem;
+  }
+
+  .site-header-inner {
+    gap: 0.5rem;
+  }
+
+  .site-header-logo-image {
+    height: 2.5rem;
+  }
+
+  .site-nav {
+    gap: 1rem;
+  }
+
+  .site-nav a {
+    height: 2rem;
+  }
+}
+
+/* Match the large-screen reference only on genuinely large viewports. */
+@media (min-width: 1600px) and (min-height: 1200px) {
+  html {
+    font-size: 18px;
+  }
+
+  .site-header {
+    padding-block: 28px;
+  }
+
+  .site-header-logo-image {
+    height: 72px;
+    max-width: 240px;
+  }
+
+  .site-nav {
+    gap: 32px;
+  }
+
+  .site-nav a {
+    font-size: 1rem;
+  }
+
+  .hero-section {
+    padding-top: 160px;
+    padding-bottom: 120px;
+  }
+
+  .hero-mark {
+    width: 245px;
+    height: 261px;
+    margin-bottom: 30px;
+  }
+
+  .hero-title {
+    min-height: 4em;
+    margin-bottom: 2rem;
+    font-size: clamp(2.6rem, 6.6vw, 6.4rem);
+  }
+
+  .hero-supporting-copy {
+    max-width: 760px;
+    font-size: 1.45rem;
+  }
+
+  .hero-actions a {
+    padding: 14px 32px;
+    font-size: 0.95rem;
+  }
+
+  main > section:not(.hero-section) {
+    padding-block: 140px;
+  }
+
+  main > section:not(.hero-section) h2 {
+    font-size: 3.4rem;
+  }
+
+  main > section:not(.hero-section) > div > div:first-child > p.text-lg {
+    font-size: 1.25rem;
+  }
+}
+
+@media (min-width: 1920px) and (min-height: 1200px) {
+  html {
+    font-size: 20px;
+  }
+
+  .site-header-logo-image {
+    height: 80px;
+    max-width: 260px;
+  }
+}
+
+@media (max-width: 80rem) {
+  .site-header-inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .site-header-logo {
+    margin-right: 0;
+  }
+
+  .site-header[data-nav-ready="true"] .site-nav-toggle {
+    display: inline-flex;
+  }
+
+  .site-header[data-nav-ready="true"] .site-nav[data-open="false"] {
+    display: none;
+  }
+
+  .site-header[data-nav-ready="true"] .site-nav[data-open="true"] {
+    display: flex;
+  }
+
+  .site-nav {
+    grid-column: 1 / -1;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 0.25rem;
+    padding-top: 0.5rem;
+  }
+
+  .site-nav a {
+    width: 100%;
+    height: 2.75rem;
+    justify-content: flex-start;
+    padding-inline: 0.75rem;
+  }
 }
